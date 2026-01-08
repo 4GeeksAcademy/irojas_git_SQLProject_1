@@ -15,10 +15,42 @@
 -- directly below the corresponding instruction
 -- -----------------------------------------------
 
---SELECT * FROM regions;
---SELECT * FROM species;
---SELECT * FROM climate;
---SELECT * FROM observations;
+SELECT * FROM regions;
+SELECT * FROM species;
+SELECT * FROM climate;
+SELECT * FROM observations;
 
-SELECT DISTINCT COUNT region_id FROM observations WHERE region_id=2;
 
+-- MISSION 1
+-- Your query here;
+SELECT * FROM observations LIMIT 10 OFFSET 1;
+SELECT * FROM species LIMIT 10 OFFSET 1;
+SELECT * FROM climate LIMIT 10 OFFSET 1;
+SELECT * FROM regions LIMIT 10 OFFSET 1;
+
+-- MISSION 2
+-- Your query here;
+SELECT DISTINCT region_id FROM observations;
+
+-- MISSION 3
+-- Your query here;
+SELECT DISTINCT COUNT species_id FROM observations;
+
+-- MISSION 4
+-- Your query here;
+
+
+-- MISSION 5
+-- Your query here;
+
+
+-- MISSION 6
+-- Your query here;
+
+
+-- MISSION 7
+-- Your query here;
+
+
+-- MISSION 8
+-- Your query here;
