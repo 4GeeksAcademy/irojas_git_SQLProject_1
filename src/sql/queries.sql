@@ -1,24 +1,2 @@
--- PLEASE READ THIS BEFORE RUNNING THE EXERCISE
 
--- ⚠️ IMPORTANT: This SQL file may crash due to two common issues: comments and missing semicolons.
-
--- ✅ Suggestions:
--- 1) Always end each SQL query with a semicolon `;`
--- 2) Ensure comments are well-formed:
---    - Use `--` for single-line comments only
---    - Avoid inline comments after queries
---    - Do not use `/* */` multi-line comments, as they may break execution
-
--- -----------------------------------------------
--- queries.sql
--- Complete each mission by writing your SQL query
--- directly below the corresponding instruction
--- -----------------------------------------------
-
---SELECT * FROM regions;
---SELECT * FROM species;
---SELECT * FROM climate;
---SELECT * FROM observations;
-
-SELECT DISTINCT COUNT region_id FROM observations WHERE region_id=2;
-
+SELECT regions.name AS region_name, species.scientific_name, COUNT(*) AS observed_species FROM observations JOIN species ON observations.species_id = species.id JOIN regions ON observations.region_id = regions.id GROUP BY region_name, species.scientific_name ORDER BY region_name, observed_species DESC;

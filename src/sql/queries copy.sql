@@ -23,34 +23,48 @@ SELECT * FROM observations;
 
 -- MISSION 1
 -- Your query here;
-SELECT * FROM observations LIMIT 10 OFFSET 1;
-SELECT * FROM species LIMIT 10 OFFSET 1;
-SELECT * FROM climate LIMIT 10 OFFSET 1;
-SELECT * FROM regions LIMIT 10 OFFSET 1;
+-- 1a Pregunta.
+SELECT * FROM observations LIMIT 10 OFFSET 0;
+SELECT * FROM species LIMIT 10 OFFSET 0;
+SELECT * FROM climate LIMIT 10 OFFSET 0;
+SELECT * FROM regions LIMIT 10 OFFSET 0;
+
+-- 2a Pregunta
+SELECT DISTINCT region_id FROM observations;
+
+--3a Pregunta
+SELECT DISTINCT COUNT species_id FROM observations;
+
+-- 4a Pregunta
+SELECT COUNT(*) FROM observations WHERE region_id = 2;
+
+-- 5a Pregunta
+SELECT observation_date FROM observations WHERE obsevation_date=1998-08-08;
+
 
 -- MISSION 2
 -- Your query here;
-SELECT DISTINCT region_id FROM observations;
+--1a Pregunta
+SELECT region_id, SUM (region_id) AS number_observations FROM observations GROUP BY region_id ORDER BY number_observations DESC;
+
+ --2a Pregunta
+SELECT region_id, SUM (region_id) AS number_observations FROM observations GROUP BY region_id ORDER BY number_observations DESC LIMIT 5;
+
+--3a Pregunta
+SELECT species_id, COUNT(*) AS qty_observations FROM observations GROUP BY species_id HAVING qty_observations < 5 ORDER BY qty_observations DESC;
+
+-- 4a Pregunta
+SELECT observer, COUNT(*) AS qty_observations FROM observations GROUP BY observer ORDER BY qty_observations DESC;
+
 
 -- MISSION 3
 -- Your query here;
-SELECT DISTINCT COUNT species_id FROM observations;
+-- 1a Pregunta
+SELECT * FROM observations JOIN regions ON observations.region_id=regions.id;
 
--- MISSION 4
--- Your query here;
+-- 2a Pregunta
+SELECT * FROM observations JOIN species ON observations.species_id=species.id;
 
+-- 3a Pregunta
+SELECT regions.name AS region_name, species.scientific_name, COUNT(*) AS observed_species FROM observations JOIN species ON observations.species_id = species.id JOIN regions ON observations.region_id = regions.id GROUP BY region_name, species.scientific_name ORDER BY region_name, observed_species DESC;
 
--- MISSION 5
--- Your query here;
-
-
--- MISSION 6
--- Your query here;
-
-
--- MISSION 7
--- Your query here;
-
-
--- MISSION 8
--- Your query here;
