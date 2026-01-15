@@ -33,7 +33,7 @@ SELECT * FROM regions LIMIT 10 OFFSET 0;
 SELECT DISTINCT region_id FROM observations;
 
 --3a Pregunta
-SELECT DISTINCT COUNT species_id FROM observations;
+SELECT DISTINCT SUM (species_id) FROM observations;
 
 -- 4a Pregunta
 SELECT COUNT(*) FROM observations WHERE region_id = 2;
@@ -45,10 +45,10 @@ SELECT observation_date FROM observations WHERE obsevation_date=1998-08-08;
 -- MISSION 2
 -- Your query here;
 --1a Pregunta
-SELECT region_id, SUM (region_id) AS number_observations FROM observations GROUP BY region_id ORDER BY number_observations DESC;
+SELECT region_id, COUNT (region_id) AS number_observations FROM observations GROUP BY region_id ORDER BY number_observations DESC;
 
  --2a Pregunta
-SELECT region_id, SUM (region_id) AS number_observations FROM observations GROUP BY region_id ORDER BY number_observations DESC LIMIT 5;
+SELECT species_id, COUNT (region_id) AS number_observations FROM observations GROUP BY region_id ORDER BY number_observations DESC LIMIT 5;
 
 --3a Pregunta
 SELECT species_id, COUNT(*) AS qty_observations FROM observations GROUP BY species_id HAVING qty_observations < 5 ORDER BY qty_observations DESC;
